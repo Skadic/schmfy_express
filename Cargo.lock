@@ -597,7 +597,7 @@ checksum = "a258529f4dfcece66eff7179d53246cdf5eab89acf586d76ec129b13ab827f0c"
 
 [[package]]
 name = "schmfy_express"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "axum",
  "dotenvy",

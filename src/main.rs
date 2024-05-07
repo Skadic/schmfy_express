@@ -1,4 +1,4 @@
-use axum::{extract::Query, routing::get, Router};
+use axum::{extract::Query, response::Html, routing::get, Router};
 use dotenvy::dotenv;
 use miette::{Context, IntoDiagnostic};
 use std::net::Ipv4Addr;
@@ -16,7 +16,9 @@ async fn main() -> miette::Result<()> {
     if dotenv().is_err() {
         info!("could not find .env file");
     }
-    let router = Router::<()>::new().route("/", get(schmfy));
+    let router = Router::<()>::new()
+        .route("/", get(home))
+        .route("/schmfy", get(schmfy));
 
     let address = std::env::var(SCHMFY_HOST)
         .into_diagnostic()
@@ -52,6 +54,10 @@ async fn main() -> miette::Result<()> {
 #[derive(serde::Deserialize)]
 struct Input {
     input: String,
+}
+
+async fn home() -> Html<&'static str> {
+    Html(include_str!("home.html"))
 }
 
 async fn schmfy(Query(Input { input }): Query<Input>) -> String {
