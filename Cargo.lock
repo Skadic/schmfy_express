@@ -592,8 +592,7 @@ checksum = "f3cb5ba0dc43242ce17de99c180e96db90b235b8a9fdc9543c96d2209116bd9f"
 [[package]]
 name = "schmfy"
 version = "0.2.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a258529f4dfcece66eff7179d53246cdf5eab89acf586d76ec129b13ab827f0c"
+source = "git+https://gitlab.fachschaften.org/skadic/schmfy#2a7a7768c6377d03cd59d5e7a661d89957e5868e"
 
 [[package]]
 name = "schmfy_express"

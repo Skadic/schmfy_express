@@ -1,6 +1,6 @@
 [package]
 name = "schmfy_express"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -10,7 +10,7 @@ axum = "0.7.5"
 dotenvy = "0.15.7"
 futures = "0.3.30"
 miette = { version = "7.2.0", features = ["fancy"] }
-schmfy = "0.2.1"
+schmfy = { git = "https://gitlab.fachschaften.org/skadic/schmfy"}
 serde = { version = "1.0.200", features = ["derive"] }
 tokio = { version = "1.37.0", features = ["rt-multi-thread", "macros", "signal"] }
 tracing = "0.1.40"

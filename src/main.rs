@@ -1,4 +1,4 @@
-use axum::{extract::Query, response::Html, routing::get, Router};
+use axum::{extract::Query, response::Html, routing::get, Json, Router};
 use dotenvy::dotenv;
 use miette::{Context, IntoDiagnostic};
 use std::net::Ipv4Addr;
@@ -18,7 +18,7 @@ async fn main() -> miette::Result<()> {
     }
     let router = Router::<()>::new()
         .route("/", get(home))
-        .route("/schmfy", get(schmfy));
+        .route("/schmfy", get(schmfy).post(schmfy_post));
 
     let address = std::env::var(SCHMFY_HOST)
         .into_diagnostic()
@@ -61,6 +61,10 @@ async fn home() -> Html<&'static str> {
 }
 
 async fn schmfy(Query(Input { input }): Query<Input>) -> String {
+    schmfy::schmfy(input.as_str())
+}
+
+async fn schmfy_post(Json(Input { input }): Json<Input>) -> String {
     schmfy::schmfy(input.as_str())
 }
 
